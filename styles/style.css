@@ -1,0 +1,37 @@
+body {
+    background-color: #EEF9BF;
+}
+
+div.game-title {
+    height: 93px;
+    margin-bottom: 47px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    font-size: 56px;
+    font-family: "Roboto", sans-serif;
+    font-weight: bold;
+    color: #75B79E;
+}
+
+ul {
+    display: flex;
+    flex-wrap: wrap;
+    width: 50vw;
+    margin: 0 auto;
+}
+
+li {
+    width: 117px;
+    margin-right: 34px;
+    margin-bottom: 34px;
+    height: 146px;
+    background-color: #A7E9AF;
+}
+
+@media (max-width: 600px) {
+    
+}
