@@ -41,10 +41,42 @@ ul {
 }
 
 li {
+    position: relative;
     width: 117px;
-    margin: 17px;
     height: 146px;
+    margin: 17px;
+}
+
+.face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
     background-color: #A7E9AF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #99CEA8;
+    backface-visibility: hidden;
+    transition: all .5s;
+    transform-style: preserve-3d;
+}
+
+.back-face {
+    transform: rotateY(180deg);
+}
+
+li:active .back-face {
+    transform: rotateY(0deg);
+}
+
+li:active .front-face {
+    transform: rotateY(-180deg);
+}
+
+img {
+    width: 100px;
+    height: 100px;
 }
 
 @media (max-width: 600px) {
