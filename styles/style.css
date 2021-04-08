@@ -45,6 +45,7 @@ li {
     width: 117px;
     height: 146px;
     margin: 17px;
+    cursor: pointer;
 }
 
 .face {
@@ -66,13 +67,15 @@ li {
     transform: rotateY(180deg);
 }
 
-li:active .back-face {
+.back-face {
+    transform: rotateY(-180deg);
+}
+
+.front-face {
     transform: rotateY(0deg);
 }
 
-li:active .front-face {
-    transform: rotateY(-180deg);
-}
+
 
 img {
     width: 100px;
