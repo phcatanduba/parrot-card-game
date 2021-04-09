@@ -49,6 +49,51 @@ lista.innerHTML += `<li>
 
 
 const itemsArray = document.querySelectorAll("li");
+let chosenCards = [];
+let countChosenCards = 0;
+
+function play(event) {
+    const item = event.currentTarget;
+    let cardOne;
+    let cardTwo;
+    let equalCards;
+
+    if(!chosenCards.includes(item)) {
+        flip(item);
+        chosenCards.push(item);
+        countChosenCards++;
+    } else if(chosenCards.includes(item)) {
+        return console.log('carta ja foi escolhida');
+    }
+    
+    let even = countChosenCards % 2 === 0;
+    if(even) {
+        cardTwo = chosenCards[chosenCards.indexOf(item)];
+        cardOne = chosenCards[chosenCards.indexOf(item) - 1];
+        equalCards = verifyCards(cardOne, cardTwo);
+        if(!equalCards) {
+            chosenCards.splice(chosenCards.length - 2, 2);
+        }
+    }
+};
+
+function verifyCards(cardOne, cardTwo) {
+    let cardOneImage = cardOne.children[1].children[0].getAttribute("src");
+    let cardTwoImage = cardTwo.children[1].children[0].getAttribute("src");
+
+    removeListener();
+    if(cardOneImage !== cardTwoImage) {
+        setTimeout(function() {
+            flip(cardOne);
+            flip(cardTwo);
+            addListener();
+        }, 1000);
+        return false;
+    } else {
+        setTimeout(addListener, 400);
+        return true;
+    };
+};
 
 function flip(item) {
     let face = item.children[0];
@@ -64,12 +109,20 @@ function flip(item) {
         face.classList.add("front-face");
         back.classList.add("back-face");
         back.classList.remove("front-face");
-    }
+    };
+};
+
+function removeListener() {
+    itemsArray.forEach(item => {
+        item.removeEventListener("click", play);
+    });
+};
+
+function addListener() {
+    itemsArray.forEach(item => {
+        item.addEventListener("click", play);
+    });
 }
 
-itemsArray.forEach(item => {
-    item.addEventListener("click", function() {
-        flip(item);
-    });
-});
+addListener();
 
