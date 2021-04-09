@@ -81,9 +81,6 @@ function play(event) {
 };
 
 function endgame() {
-    console.log("teste");
-    console.log(chosenCards.length)
-    console.log(cardNumbers);
     if(chosenCards.length === cardNumbers) {
         setTimeout(alert, 500,`Voce ganhou em ${countChosenCards} jogadas!`);
     }
