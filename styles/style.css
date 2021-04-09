@@ -75,11 +75,28 @@ li {
     transform: rotateY(0deg);
 }
 
-
-
 img {
     width: 100px;
     height: 100px;
+}
+
+.time {
+    background: gray;
+    width: 60px;
+    height: 40px;
+    position: fixed;
+    top: 100px;
+    z-index: 20;
+    right: calc(39vw - 30%);
+}
+
+span {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 20px;
 }
 
 @media (max-width: 600px) {
