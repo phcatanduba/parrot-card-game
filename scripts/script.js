@@ -3,7 +3,7 @@ let cardNumbers;
 let conditionsToPlay;
 
 do {
-    cardNumbers = prompt("Digite a quantidade de cartas \n\n Permitido apenas pares entre 4 e 14");
+    cardNumbers = parseInt(prompt("Digite a quantidade de cartas \n\n Permitido apenas pares entre 4 e 14"));
 
     let firstConditionToPlay = cardNumbers >= 4 && cardNumbers <= 14;
     let secondConditionToPlay = cardNumbers % 2 === 0;
@@ -74,8 +74,20 @@ function play(event) {
         if(!equalCards) {
             chosenCards.splice(chosenCards.length - 2, 2);
         }
+        if(equalCards) {
+            endgame();
+        }
     }
 };
+
+function endgame() {
+    console.log("teste");
+    console.log(chosenCards.length)
+    console.log(cardNumbers);
+    if(chosenCards.length === cardNumbers) {
+        setTimeout(alert, 500,`Voce ganhou em ${countChosenCards} jogadas!`);
+    }
+}
 
 function verifyCards(cardOne, cardTwo) {
     let cardOneImage = cardOne.children[1].children[0].getAttribute("src");
